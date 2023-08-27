@@ -1,6 +1,6 @@
 @include('layouts.app')
 <div class="container">
-    <a type="button" class="btn btn-outline-info m-2" href="{{route('post.create')}}">New Post</a>
+    <a type="button" class="btn btn-outline-info m-2" href="{{route('posts.create')}}">New Post</a>
     <div class="card">
         <div class="card-body">
             <h5 class="card-title">Blog Post</h5>
@@ -26,7 +26,9 @@
                             {{$post->content}}
                         </td>
                         <td>
-                            <a href="{{route('post.edit',$post->id)}}">Edit</a>
+                            <a href="{{route('posts.edit',$post->id)}}" class="btn btn-outline-primary">Edit</a>
+                            <a href="{{route('posts.show',$post->id)}}" class="btn btn-outline-success">View</a>
+                            <button type="button" class="btn btn-outline-danger">Delete</button>
                         </td>
                     </tr>
                     @endforeach

@@ -30,21 +30,24 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        // $user=Auth::user();
-        $post =  $request->validate([
-            'title' => 'required|max:255',
-            'content' => 'required|max:255'
-        ]);
-        // $post['user_id'] = $user->id;
-        Post::create($post);
-        return redirect()->route('post.index')->with('success', 'Post created successfully.');
+        $user = Auth::user(); 
+        $data = $request->validate([ 
+            'title' => 'required|nullable', 
+            'content' => 'required|nullable', 
+        ]); 
+        $data['user_id'] = $user->id; 
+        Post::create($data);
+        return redirect()->route('posts.index')->with('success', 'Post created successfully.');
     }
 
     /**
      * Display the specified resource.
      */
  
-
+     public function show(Post $post)
+     {
+        return view('posts.show',compact('post'));
+     }
     /**
      * Show the form for editing the specified resource.
      */
