@@ -12,7 +12,8 @@ class PostController extends Controller
      */
     public function index()
     {
-        return view('posts.index');
+        $posts = Post::all();
+        return view('posts.index',compact('posts'));
     }
 
     /**
@@ -20,7 +21,7 @@ class PostController extends Controller
      */
     public function create()
     {
-        //
+        return view('posts.create');
     }
 
     /**
@@ -28,7 +29,12 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        //
+      $post=  $request->validate([
+            'title'=>'requierd|max:255',
+            'content'=>'requierd|max:255'
+        ]);
+      Post::created($post);
+      return redirect()->route('posts.index')->with('success', 'Post created successfully.');
     }
 
     /**
