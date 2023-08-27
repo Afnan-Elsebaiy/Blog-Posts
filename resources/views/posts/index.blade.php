@@ -10,6 +10,7 @@
                         <th scope="col">#</th>
                         <th scope="col">Title</th>
                         <th scope="col">Content</th>
+                        <th scope="col-2">Action</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -23,6 +24,9 @@
                         </td>
                         <td>
                             {{$post->content}}
+                        </td>
+                        <td>
+                            <a href="{{route('post.edit',$post->id)}}">Edit</a>
                         </td>
                     </tr>
                     @endforeach
