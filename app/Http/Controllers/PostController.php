@@ -61,7 +61,15 @@ class PostController extends Controller
      */
     public function update(Request $request, Post $post)
     {
-        //
+        $user = Auth::user();
+       $data= $request->validate([
+            'title' => 'required|nullable', 
+            'content' => 'required|nullable', 
+        ]);
+        $data['user_id'] = $user->id;
+        $post->update($data);
+        return redirect()->route('posts.index',compact('post'))->with('success', 'Post updated successfully.');
+
     }
 
     /**

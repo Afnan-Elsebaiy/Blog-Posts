@@ -5,8 +5,9 @@
     <h5 class="card-title m-auto">Blog Post</h5>
         <div class="card-body">
         
-            <form method="post" action="">
+            <form method="post" action="{{route('posts.update',$post->id)}}">
                 @csrf
+                @method('PUT')
                 <div class="mb-3">
                     <label for="exampleInputTitle" class="form-label">Title</label>
                     <input type="text" class="form-control" id="exampleInputTitle" name="title" value="{{$post->title}}" placeholder="Enter your Title">
