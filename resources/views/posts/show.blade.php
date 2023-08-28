@@ -2,10 +2,10 @@
 
 <div class="container">
     <div class="card  m-auto" style="width: 40rem;">
-    <h5 class="card-title m-auto">Blog Post</h5>
+    <h5 class="card-title text-center mt-4">Blog Post</h5>
         <div class="card-body">
             <div>
-                <p>Title : {{$post->title}}</p>
+                <h6 class="text-decoration-underline">{{$post->title}}</h6>
                 
             </div>
             <div>

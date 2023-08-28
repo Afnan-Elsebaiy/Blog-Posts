@@ -20,9 +20,10 @@ Route::get('/', function () {
 });
 
 Auth::routes();
-
+Route::middleware(['auth'])->group(function () {
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::resource('posts', PostController::class);
+});
 // Route::get('/posts', [App\Http\Controllers\PostController::class, 'index'])->name('posts.index');
 // Route::get('/posts/create', [App\Http\Controllers\PostController::class, 'create'])->name('posts.create');
 // Route::post('/posts', [App\Http\Controllers\PostController::class, 'store'])->name('posts.store');
