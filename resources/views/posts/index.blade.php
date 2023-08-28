@@ -28,7 +28,10 @@
                         <td>
                             <a href="{{route('posts.edit',$post->id)}}" class="btn btn-outline-primary">Edit</a>
                             <a href="{{route('posts.show',$post->id)}}" class="btn btn-outline-success">View</a>
+                            <form action="">
                             <button type="button" class="btn btn-outline-danger">Delete</button>
+                            </form>
+                            
                         </td>
                     </tr>
                     @endforeach
