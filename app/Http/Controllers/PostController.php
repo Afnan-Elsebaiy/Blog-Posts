@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Post;
+use App\Models\User;
+use App\Notifications\Postnotification;
+use App\Notifications\PostNotification as NotificationsPostNotification;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -14,6 +17,11 @@ class PostController extends Controller
     public function index()
     {
         $posts = Post::all();
+        // $user = User::find(1);
+        // $messages["hi"] = "Hey, Happy Birthday {$user->name}";
+        // $messages["show"] = "On behalf of the entire company I wish you a very happy birthday and send you my best wishes for much happiness in your life.";
+          
+        // $user->notify(new Postnotification($messages));
         return view('posts.index', compact('posts'));
     }
 
@@ -71,12 +79,21 @@ class PostController extends Controller
         return redirect()->route('posts.index',compact('post'))->with('success', 'Post updated successfully.');
 
     }
-
+    /**
+     * send notification
+     */
+    // public function sendNotification()
+    // {
+    //     $user = User::find(1); // Replace with the user you want to notify
+    //     $user->notify(new PostNotification());
+    // }
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Post $post)
+    public function destroy($id)
     {
-        //
+        $post = Post::findOrFail($id);
+        $post->delete();
+        return redirect()->route('posts.index')->with('success', 'Post deleted successfully.');
     }
 }

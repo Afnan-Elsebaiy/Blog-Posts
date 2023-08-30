@@ -2,7 +2,7 @@
 
 <div class="container">
     <div class="card  m-auto" style="width: 40rem;">
-    <h5 class="card-title m-auto">Blog Post</h5>
+    <h5 class="card-title m-4 text-center">Blog Post</h5>
         <div class="card-body">
         
             <form method="post" action="{{route('posts.update',$post->id)}}">
@@ -18,7 +18,7 @@
                     <input type="text" class="form-control" id="exampleInputContent" name="content" value="{{$post->content}}" placeholder="Enter your Content">
                 </div>
                 <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                    <button type="submit" class="btn btn-outline-success">Apply Change</button>
+                    <button type="submit" class="btn btn-outline-success cursor-pointer	">Apply Change</button>
                 </div>
             </form>
         </div>
