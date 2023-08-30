@@ -4,8 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Post;
 use App\Models\User;
-use App\Notifications\Post as NotificationsPost;
 use App\Notifications\Postnotification;
+use App\Notifications\PostNotification as NotificationsPostNotification;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -79,7 +79,14 @@ class PostController extends Controller
         return redirect()->route('posts.index',compact('post'))->with('success', 'Post updated successfully.');
 
     }
-
+    /**
+     * send notification
+     */
+    // public function sendNotification()
+    // {
+    //     $user = User::find(1); // Replace with the user you want to notify
+    //     $user->notify(new PostNotification());
+    // }
     /**
      * Remove the specified resource from storage.
      */
